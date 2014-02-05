@@ -5,16 +5,95 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title></title>
 		<script src="https://code.jquery.com/jquery.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 		<link rel="stylesheet" type="text/css" href="style.css" />
-		<script type="text/javascript" src="scriptsFabio.js"></script>
-		<script type="text/javascript" src="scriptsSamba.js"></script>			
+		<script type="text/javascript" src="scripts.js"></script>
+
 	</head>
 	<body>
-		<div class="container">
+		<div class="container" id="contBody">
+			<div class="row">
+				<h1 class="text-center">Titre</h1>
+			</div>
+			<div class="row">
+				<div class="col-lg-2" id="divMenuGauche">
+					<input type="button" class="btn btn-primary col-lg-10 col-lg-offset-1 col-xs-12" value="File"></button>
+					<button type="button" class="btn btn-success col-lg-10 col-lg-offset-1 col-xs-12">Photo</button>
+					<button type="button" class="btn btn-success col-lg-10 col-lg-offset-1 col-xs-12">Sauvegarde</button>
+					<button type="button" class="btn btn-info col-lg-10 col-lg-offset-1 col-xs-12">Aide</button>
+				</div>
+				<div class="col-lg-5 col-xs-12" id="divCanvas">
+					<canvas id="canvas" height="400" width="500">
+						<span> Your browser doesnt suppont canvas. </span>
+					</canvas>
+				</div>
+				<div class="col-lg-4 col-lg-offset-1" id="divMenuDroite">
+					<div class="row" id="mnuDrtLn0">
+						<label for="idBlur" class="col-lg-2">Blur:</label>
+						<div class="col-lg-3">
+							<input type="number" class="form-control" id="idBlur" min="0" max="10" step="1" value="0"/>
+						</div>
+						
+						<label for="idHueRotate" class="col-lg-4">Hue-rotate:</label>
+						<div class="col-lg-3">
+							<input type="number" class="form-control" id="idHueRotate" min="0" max="180" step="18" value="0"/>
+						</div>
+					</div>
+					
+					<div class="row" id="mnuDrtLn1">
+						<label for="idInvert" class="col-lg-2">Invert:</label>
+						<div class="col-lg-3">
+							<input type="number" class="form-control" id="idInvert" min="0" max="1" step="0.1" value="0"/>
+						</div>
+						
+						<label for="idBrightness" class="col-lg-4">Brightness:</label>
+						<div class="col-lg-3">
+							<input type="number" class="form-control" id="idBrightness" min="0" max="10" step="1" value="0"/>
+						</div>
+					</div>
 
+					<div class="row" id="mnuDrtLn2">
+						<label for="idSepia" class="col-lg-2">Sepia:</label>
+						<div class="col-lg-3">
+							<input type="number" class="form-control" id="idSepia" min="0" max="1" step="0.1" value="0"/>
+						</div>
+						
+						<label for="idGrayscale" class="col-lg-4">Grayscale:</label>
+						<div class="col-lg-3">
+							<input type="number" class="form-control" id="idGrayscale" min="0" max="1" step="0.1" value="0"/>
+						</div>
+					</div>
+
+					<div class="row" id="mnuDrtLn3">
+						<label for="idOpacity" class="col-lg-2">Opacity:</label>
+						<div class="col-lg-3">
+							<input type="number" class="form-control" id="idOpacity" min="0" max="1" step="0.1" value="0"/>
+						</div>
+						
+						<label for="idSaturate" class="col-lg-4">Saturate:</label>
+						<div class="col-lg-3">
+							<input type="number" class="form-control" id="idSaturate" min="0" max="10" step="1" value="0"/>
+						</div>
+					</div>
+					
+					<div class="row" id="mnuDrtLn4">
+						<label for="idContrast" class="col-lg-2">Contrast:</label>
+						<div class="col-lg-3">
+							<input type="number" class="form-control" id="idContrast" min="0" max="10" step="1" value="0"/>
+						</div>
+						
+						<label for="idColorBg" class="col-lg-4">Pick a color:</label>
+						<div class="col-lg-3">
+							<input type="color" class="form-control" id="idColorBg"/>
+						</div>
+					</div>
+					<div class="row" id="mnuDrtLn5">
+						<button type="button" class="btn btn-danger col-lg-6 col-lg-offset-3">Reset image</button>
+					</div>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

@@ -1,0 +1,23 @@
+button{
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+input{
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+label{
+	margin-top:13px;
+	color:white;
+	text-shadow:2px 2px 10px black;
+}
+
+#divMenuDroite, #divMenuGauche{
+	margin-top:20px;
+}
+
+canvas{
+	border-radius:25px;
+}

@@ -1,12 +1,13 @@
+var arrayDefault = new Array(0, 0 ,0 ,1, 0, 0, 1, 1, 1);
+
 window.onload = function(){
-	var canvas = document.getElementById("canvas");
+	canvas = document.getElementById("canvas");
 	var ctx = canvas.getContext('2d');
 	var image = new Image();
 
+	document.getElementById("idReset").onclick = reset;
 	
 	image.src = "images/homer.jpeg";
-	//var btnReset = document.getElementById("idReset");
-	//btnReset.addEventListener('click',reset,false)
 	
 	
 	image.onload = function(){
@@ -135,11 +136,19 @@ window.onload = function(){
 			}
      }
 
+ function reset(){
+	canvas.removeAttribute("style");
+	for(var i=0; i< arrayDefault.length; i++){
+		document.getElementsByTagName('input')[i+1].value = arrayDefault[i];
+	}
+}
 
-/*function reset(){
- var ranges = document.querySelectorAll('input[type="number"]');
-  for (var i = 0, r; r = ranges[i]; i++) {
-    r.value = r.min;
-  }
-}*/
-
+//var filtres = document.querySelectorAll('input[type="number"]');
+var filtres = document.getElementsByTagName("input");
+var r;
+for(var i=0; i<filtres.lenght; i++){
+  //filtres[i];
+  //r.value = r.min;
+  filtres[i].innerHTML = 0;
+}
+//canvas.toDataURL(); sauvegarde							

@@ -22,7 +22,7 @@
 					<input type="button" class="btn btn-primary col-lg-10 col-lg-offset-1 col-xs-12" value="File"></button>
 					<button type="button" class="btn btn-success col-lg-10 col-lg-offset-1 col-xs-12">Photo</button>
 					<button type="button" class="btn btn-success col-lg-10 col-lg-offset-1 col-xs-12">Sauvegarde</button>
-					<button type="button" class="btn btn-info col-lg-10 col-lg-offset-1 col-xs-12">Aide</button>
+					<button type="button" class="btn btn-info col-lg-10 col-lg-offset-1 col-xs-12">Aide</button>				
 				</div>
 				<div class="col-lg-5 col-xs-12" id="divCanvas">
 					<canvas id="canvas" height="400" width="500">
@@ -50,7 +50,7 @@
 						
 						<label for="idBrightness" class="col-lg-4">Brightness:</label>
 						<div class="col-lg-3">
-							<input type="number" class="form-control" id="idBrightness" min="0" max="10" step="1" value="0"/>
+							<input type="number" class="form-control" id="idBrightness" min="0" max="10" step="0.1" value="1"/>
 						</div>
 					</div>
 
@@ -69,19 +69,19 @@
 					<div class="row" id="mnuDrtLn3">
 						<label for="idOpacity" class="col-lg-2">Opacity:</label>
 						<div class="col-lg-3">
-							<input type="number" class="form-control" id="idOpacity" min="0" max="1" step="0.1" value="0"/>
+							<input type="number" class="form-control" id="idOpacity" min="0" max="1" step="0.1" value="1"/>
 						</div>
 						
 						<label for="idSaturate" class="col-lg-4">Saturate:</label>
 						<div class="col-lg-3">
-							<input type="number" class="form-control" id="idSaturate" min="0" max="10" step="1" value="0"/>
+							<input type="number" class="form-control" id="idSaturate" min="0" max="10" step="1" value="1"/>
 						</div>
 					</div>
 					
 					<div class="row" id="mnuDrtLn4">
 						<label for="idContrast" class="col-lg-2">Contrast:</label>
 						<div class="col-lg-3">
-							<input type="number" class="form-control" id="idContrast" min="0" max="10" step="1" value="0"/>
+							<input type="number" class="form-control" id="idContrast" min="0" max="10" step="0.5" value="1"/>
 						</div>
 						
 						<label for="idColorBg" class="col-lg-4">Pick a color:</label>
@@ -90,10 +90,14 @@
 						</div>
 					</div>
 					<div class="row" id="mnuDrtLn5">
-						<button type="button" class="btn btn-danger col-lg-6 col-lg-offset-3">Reset image</button>
+						<button type="button" id="idReset" class="btn btn-danger col-lg-6 col-lg-offset-3">Reset image</button>
 					</div>
 				</div>
 			</div>
+			<div class="row">
+				<video id="my_video" autoplay></video>
+			</div>
+
 		</div>
 	</body>
 </html>

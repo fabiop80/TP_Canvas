@@ -12,17 +12,23 @@ var graysaValue=0;
 var opaciValue=1;
 var satuvalue=1;
 var contrstValue = 1;
+var tabPhotos;
 
 
 window.onload = function(){
+
 	 canvas = document.getElementById("canvas");
 	 ctx = canvas.getContext('2d');
+	 
 	var image = new Image();
 	
+	 
 	canvas.style.filter = canvas.style.filter || canvas.style.webkitFilter || canvas.style.mozFilter
 	
-	image.src = "images/beyonce.jpg";
-
+	//image.src = "images/beyonce.jpg";
+    image.src = localStorage.getItem("src");
+	//afficherPhoto();
+	
 	image.onload = function(){
 		//canvas.width = image.width;
 		//canvas.height = image.height;
@@ -143,8 +149,11 @@ window.onload = function(){
 											video.src = window.URL.createObjectURL(stream);
 											prise = stream;
                                              }, erreur);
+											 
+	
 		
 }
+
 
 //acces camera
  function photo() {
@@ -159,13 +168,3 @@ window.onload = function(){
 		document.getElementsByTagName('input')[i+1].value = arrayDefault[i];
 	}
 }
-
-//var filtres = document.querySelectorAll('input[type="number"]');
-var filtres = document.getElementsByTagName("input");
-var r;
-for(var i=0; i<filtres.lenght; i++){
-  //filtres[i];
-  //r.value = r.min;
-  filtres[i].innerHTML = 0;
-}
-//canvas.toDataURL(); sauvegarde							

@@ -1,114 +1,138 @@
 var arrayDefault = new Array(0, 0 ,0 ,1, 0, 0, 1, 1, 1);
 
-window.onload = function(){
-	canvas = document.getElementById("canvas");
-	var ctx = canvas.getContext('2d');
-	var image = new Image();
+var canvas;
+var ctx; 
+var video;
+var bluValue=0;
+var hueRValue=0;
+var invtValue=0;
+var brightnValue=1;
+var sepiValue=0;
+var graysaValue=0;
+var opaciValue=1;
+var satuvalue=1;
+var contrstValue = 1;
 
-	document.getElementById("idReset").onclick = reset;
+
+window.onload = function(){
+	 canvas = document.getElementById("canvas");
+	 ctx = canvas.getContext('2d');
+	var image = new Image();
 	
-	image.src = "images/homer.jpeg";
+	canvas.style.filter = canvas.style.filter || canvas.style.webkitFilter || canvas.style.mozFilter
 	
-	
+	image.src = "images/beyonce.jpg";
+
 	image.onload = function(){
+		//canvas.width = image.width;
+		//canvas.height = image.height;
 		ctx.drawImage(this, 0, 0, canvas.width, canvas.height);
 	}
 	
 	var blu = document.getElementById('idBlur');
 	blu.addEventListener('change', function(e){
 		e = window.event;
-		canvas.style.webkitFilter = 'blur('+this.value+'px)' + 'hue-rotate('+hueR.value+'deg)' +
-		                            'invert('+invt.value+')' + 'brightness('+brightn.value+')' +
-									'sepia('+sepi.value+')' + 'grayscale('+graysa.value+')' +
-									'opacity('+opaci.value+')' + 'saturate('+satu.value+')' + 
-									'contrast('+contrst.value+')';
+		bluValue = this.value;
+		canvas.style.webkitFilter = 'blur('+this.value+'px)' + 'hue-rotate('+hueRValue+'deg)' +
+		                            'invert('+invtValue+')' + 'brightness('+brightnValue+')' +
+									'sepia('+sepiValue+')' + 'grayscale('+graysaValue+')' +
+									'opacity('+opaciValue+')' + 'saturate('+satuvalue+')' + 
+									'contrast('+contrstValue+')';
 	}, false);
 	
 	var hueR = document.getElementById('idHueRotate');
 	hueR.addEventListener('change', function(e){
 		e = window.event;
-		canvas.style.webkitFilter = 'blur('+blu.value+'px)' + 'hue-rotate('+this.value+'deg)' + 
-		                            'invert('+invt.value+')' + 'brightness('+brightn.value+')' +
-									'sepia('+sepi.value+')' + 'grayscale('+graysa.value+')' +
-									'opacity('+opaci.value+')' + 'saturate('+satu.value+')' +
-									'contrast('+contrst.value+')';
+		hueRValue = this.value;
+		canvas.style.webkitFilter = 'blur('+bluValue+'px)' + 'hue-rotate('+this.value+'deg)' + 
+		                            'invert('+invtValue+')' + 'brightness('+brightnValue+')' +
+									'sepia('+sepiValue+')' + 'grayscale('+graysaValue+')' +
+									'opacity('+opaciValue+')' + 'saturate('+satuvalue+')' +
+									'contrast('+contrstValue+')';
 	}, false);
 	
 	var invt = document.getElementById('idInvert');
 	invt.addEventListener('change', function(e){
 		e = window.event;
-		canvas.style.webkitFilter =  'blur('+blu.value+'px)' + 'hue-rotate('+hueR.value+'deg)'+
-		                             'invert('+this.value+')' + 'brightness('+brightn.value+')'+
-                                      'sepia('+sepi.value+')' + 'grayscale('+graysa.value+')'+
-									  'opacity('+opaci.value+')'+ 'saturate('+satu.value+')' +
-									  'contrast('+contrst.value+')';
+		invtValue = this.value;
+		canvas.style.webkitFilter =  'blur('+bluValue+'px)' + 'hue-rotate('+hueRValue+'deg)'+
+		                             'invert('+this.value+')' + 'brightness('+brightnValue+')'+
+                                      'sepia('+sepiValue+')' + 'grayscale('+graysaValue+')'+
+									  'opacity('+opaciValue+')'+ 'saturate('+satuvalue+')' +
+									  'contrast('+contrstValue+')';
 	}, false);
 	
 	var brightn = document.getElementById('idBrightness');
 	brightn.addEventListener('change', function(e){
 		e = window.event;
-		canvas.style.webkitFilter = 'blur('+blu.value+'px)' + 'hue-rotate('+hueR.value+'deg)'+
-		                            'invert('+invt.value+')' + 'brightness('+this.value+')' +
-									'sepia('+sepi.value+')' + 'grayscale('+graysa.value+')' + 
-									'opacity('+opaci.value+')'+ 'saturate('+satu.value+')' +
-									'contrast('+contrst.value+')';
+		brightnValue = this.value;
+		canvas.style.webkitFilter = 'blur('+bluValue+'px)' + 'hue-rotate('+hueRValue+'deg)'+
+		                            'invert('+invtValue+')' + 'brightness('+this.value+')' +
+									'sepia('+sepiValue+')' + 'grayscale('+graysaValue+')' + 
+									'opacity('+opaciValue+')'+ 'saturate('+satuvalue+')' +
+									'contrast('+contrstValue+')';
 	}, false);
 	
 	var sepi = document.getElementById('idSepia');
 	sepi.addEventListener('change', function(e){
 		e = window.event;
-		canvas.style.webkitFilter = 'blur('+blu.value+'px)' + 'hue-rotate('+hueR.value+'deg)'+
-		                            'invert('+invt.value+')' + 'brightness('+brightn.value+')' +
-									'sepia('+this.value+')' + 'grayscale('+graysa.value+')' +
-									'opacity('+opaci.value+')'+ 'saturate('+satu.value+')' + 
-									'contrast('+contrst.value+')';
+		sepiValue = this.value;
+		canvas.style.webkitFilter = 'blur('+bluValue+'px)' + 'hue-rotate('+hueRValue+'deg)'+
+		                            'invert('+invtValue+')' + 'brightness('+brightnValue+')' +
+									'sepia('+this.value+')' + 'grayscale('+graysaValue+')' +
+									'opacity('+opaciValue+')'+ 'saturate('+satuvalue+')' + 
+									'contrast('+contrstValue+')';
 	}, false);
 	
 	var graysa = document.getElementById('idGrayscale');
 	graysa.addEventListener('change', function(e){
 		e = window.event;
-		canvas.style.webkitFilter = 'blur('+blu.value+'px)' + 'hue-rotate('+hueR.value+'deg)'+
-		                            'invert('+invt.value+')' + 'brightness('+brightn.value+')' +
-									'sepia('+sepi.value+')' + 'grayscale('+this.value+')' + 
-									'opacity('+opaci.value+')'+ 'saturate('+satu.value+')' + 
-									'contrast('+contrst.value+')';
+		graysaValue = this.value;
+		canvas.style.webkitFilter = 'blur('+bluValue+'px)' + 'hue-rotate('+hueRValue+'deg)'+
+		                            'invert('+invtValue+')' + 'brightness('+brightnValue+')' +
+									'sepia('+sepiValue+')' + 'grayscale('+this.value+')' + 
+									'opacity('+opaciValue+')'+ 'saturate('+satuvalue+')' + 
+									'contrast('+contrstValue+')';
 	}, false);
 	
 	var opaci= document.getElementById('idOpacity');
 	opaci.addEventListener('change', function(e){
 		e = window.event;
-		canvas.style.webkitFilter = 'blur('+blu.value+'px)' + 'hue-rotate('+hueR.value+'deg)'+
-		                            'invert('+invt.value+')' + 'brightness('+brightn.value+')' +
-									'sepia('+sepi.value+')' + 'grayscale('+graysa.value+')' +
-									'opacity('+this.value+')'+ 'saturate('+satu.value+')' +
-									'contrast('+contrst.value+')';
+		opaciValue = this.value;
+		canvas.style.webkitFilter = 'blur('+bluValue+'px)' + 'hue-rotate('+hueRValue+'deg)'+
+		                            'invert('+invtValue+')' + 'brightness('+brightnValue+')' +
+									'sepia('+sepiValue+')' + 'grayscale('+graysaValue+')' +
+									'opacity('+this.value+')'+ 'saturate('+satuvalue+')' +
+									'contrast('+contrstValue+')';
 	}, false);
 	
     var satu = document.getElementById('idSaturate');
 	satu.addEventListener('change', function(e){
 	   e = window.event;
-	   canvas.style.webkitFilter = 'blur('+blu.value+'px)' + 'hue-rotate('+hueR.value+'deg)'+
-		                            'invert('+invt.value+')' + 'brightness('+brightn.value+')' +
-									'sepia('+sepi.value+')' + 'grayscale('+graysa.value+')' +
-									'opacity('+opaci.value+')'+'saturate('+this.value+')' +
-									'contrast('+contrst.value+')';
+	  satuvalue = this.value;
+	   canvas.style.webkitFilter = 'blur('+bluValue+'px)' + 'hue-rotate('+hueRValue+'deg)'+
+		                            'invert('+invtValue+')' + 'brightness('+brightnValue+')' +
+									'sepia('+sepiValue+')' + 'grayscale('+graysaValue+')' +
+									'opacity('+opaciValue+')'+'saturate('+this.value+')' +
+									'contrast('+contrstValue+')';
     }, false);	
 	
 	var contrst = document.getElementById('idContrast');
 	contrst.addEventListener('change', function(e){
 	   e = window.event;
-	   canvas.style.webkitFilter = 'blur('+blu.value+'px)' + 'hue-rotate('+hueR.value+'deg)'+
-		                            'invert('+invt.value+')' + 'brightness('+brightn.value+')' +
-									'sepia('+sepi.value+')' + 'grayscale('+graysa.value+')' +
-									'opacity('+opaci.value+')'+'saturate('+satu.value+')' +
+	  contrstValue = this.value;
+	   canvas.style.webkitFilter = 'blur('+bluValue+'px)' + 'hue-rotate('+hueRValue+'deg)'+
+		                            'invert('+invtValue+')' + 'brightness('+brightnValue+')' +
+									'sepia('+sepiValue+')' + 'grayscale('+graysaValue+')' +
+									'opacity('+opaci.value+')'+'saturate('+satuvalue+')' +
 									'contrast('+this.value+')';
     }, false);
 	
-	var video = document.getElementById("my_video");
+	video = document.getElementById("my_video");
 	video.addEventListener("click", photo, false); 
 	
 	var erreur = function(e){
-       console.log("Accès refusé à la caméra");
+      console.log("Accès refusé à la caméra");
      } 
 	 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || 
 	                          navigator.mozGetUserMedia || navigator.msGetUserMedia; 
@@ -117,22 +141,15 @@ window.onload = function(){
 	                         function(stream){
 											//var video = document.querySelector("video"); 
 											video.src = window.URL.createObjectURL(stream);
-											
+											prise = stream;
                                              }, erreur);
-
-
-//action
-	
-	
+		
 }
 
 //acces camera
-  
- 
  function photo() {
-         if (stream){ /* Sommes-nous en train de filmer? */
+         if (prise){ /* Sommes-nous en train de filmer? */
 				ctx.drawImage(video, 0, 0); /* Je dessine sur mon canvas ce que mon image film*/ 
-				document.querySelector("img").src = canvas.toDataURL("image/webp");
 			}
      }
 

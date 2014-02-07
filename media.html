@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title></title>
+		<style>
+			.grayscale {
+				-webkit-filter: grayscale(1);
+			}
+			.sepia {
+				-webkit-filter: sepia(1);
+			}
+			.blur {
+				-webkit-filter: blur(3px);
+			}
+			.brightness {
+				-webkit-filter: brightness(20);
+			}
+			
+			.contrast{
+				-webkit-filter: contrast(5);
+			}
+			
+			.hue-rotate{
+				-webkit-filter: hue-rotate(100deg);
+			}
+			.hue-rotate2{
+				-webkit-filter: hue-rotate(50deg);
+			}
+			.hue-rotate3{
+				-webkit-filter: hue-rotate(300deg);
+			}
+			.saturate{
+				-webkit-filter: saturate(2);
+			}
+			.invert{
+				-webkit-filter: invert(0.8);
+			}
+		</style>
+		<script>	
+			
+			window.onload = function(){
+				var c = document.querySelector("canvas");
+				var ctx = c.getContext("2d");
+				var img = document.querySelector("img")
+				video = document.querySelector("video");
+				video.addEventListener("click", photo, false);
+				
+				navigator.getUserMedia = navigator.getUserMedia || 
+				navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+				
+				navigator.getUserMedia({video: true},
+					function(stream){					
+						video.src = window.URL.createObjectURL(stream);
+						photo = stream;	
+					}, erreur);
+					
+				var erreur = function(e){
+					console.log("Acces refuser a la camera");
+				}
+				
+				function photo(){
+					if (photo){
+						ctx.drawImage(video, 0, 0);
+						img.src = c.toDataURL("image/webp");
+					}
+				}
+				
+				img.addEventListener("click", changerFiltre, false);
+				
+				var idx = 0;
+				var filters = ['grayscale', 'sepia', 'blur', 'brightness',
+               'contrast', 'hue-rotate', 'hue-rotate2',
+               'hue-rotate3', 'saturate', 'invert', ''];;
+				
+				function changerFiltre(e) {
+				  var el = e.target;
+				  el.className = '';
+				  var effect = filters[idx++ % filters.length]; // loop through filters.
+				  if (effect) {
+					el.classList.add(effect);
+				  }
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<video class="contrast" autoplay></video>
+		<canvas class="contrast" width="500" height="500"></canvas>
+		<img src="" />
+	</body>
+</html>

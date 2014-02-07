@@ -25,8 +25,8 @@ window.onload = function(){
 	image.src = "images/beyonce.jpg";
 
 	image.onload = function(){
-		//canvas.width = image.width;
-		//canvas.height = image.height;
+	canvas.width = image.width;
+	canvas.height = image.height;
 		ctx.drawImage(this, 0, 0, canvas.width, canvas.height);
 	}
 	
@@ -140,17 +140,19 @@ window.onload = function(){
 							  
 	 navigator.getUserMedia({video: true}, 
 	                         function(stream){
-											//var video = document.querySelector("video"); 
-											video.src = window.URL.createObjectURL(stream);
-											prise = stream;
-                                             }, erreur);
+								//var video = document.querySelector("video"); 
+								video.src = window.URL.createObjectURL(stream);
+								prise = stream;
+								}, erreur);
 		
 }
 
 //acces camera
  function photo() {
          if (prise){ /* Sommes-nous en train de filmer? */
-				ctx.drawImage(video, 0, 0); /* Je dessine sur mon canvas ce que mon image film*/ 
+				canvas.width = video.videoWidth;
+				canvas.height = video.videoHeight;
+				ctx.drawImage(video, 0, 0, canvas.width, canvas.height); /* Je dessine sur mon canvas ce que mon image film*/ 
 			}
      }
 

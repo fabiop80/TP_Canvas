@@ -56,6 +56,6 @@ function ajouterAuCanvas(e){
 	var img = new Image();
 	img.src = e.currentTarget.getAttribute('src');
 	img.onload = function(){
-		ctx.drawImage(this,0, 0, 300, 300);
+		ctx.drawImage(this,0, 0, canvas.width, canvas.height);
 	}
 }

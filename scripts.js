@@ -15,8 +15,9 @@ var contrstValue = 1;
 
 
 window.onload = function(){
-	 canvas = document.getElementById("canvas");
-	 ctx = canvas.getContext('2d');
+	dragListeners();
+	canvas = document.getElementById("canvas");
+	ctx = canvas.getContext('2d');
 	var image = new Image();
 	
 	canvas.style.filter = canvas.style.filter || canvas.style.webkitFilter || canvas.style.mozFilter
@@ -121,8 +122,8 @@ window.onload = function(){
 	contrst.addEventListener('change', function(e){
 	   e = window.event;
 	  contrstValue = this.value;
-	   canvas.style.webkitFilter = 'blur('+bluValue+'px)' + 'hue-rotate('+hueRValue+'deg)'+
-		                            'invert('+invtValue+')' + 'brightness('+brightnValue+')' +
+	   canvas.style.webkitFilter = 	'blur('+bluValue+'px)' + 'hue-rotate('+hueRValue+'deg)'+
+									'invert('+invtValue+')' + 'brightness('+brightnValue+')' +
 									'sepia('+sepiValue+')' + 'grayscale('+graysaValue+')' +
 									'opacity('+opaci.value+')'+'saturate('+satuvalue+')' +
 									'contrast('+this.value+')';

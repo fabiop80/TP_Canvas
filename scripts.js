@@ -17,10 +17,16 @@ var tabPhotos;
 
 window.onload = function(){
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	 canvas = document.getElementById("canvas");
 	 ctx = canvas.getContext('2d');
 	 
+=======
+	dragListeners();
+	canvas = document.getElementById("canvas");
+	ctx = canvas.getContext('2d');
+>>>>>>> f6a64ffbc54a0cbbb41583add6e6340150d3a92e
 =======
 	dragListeners();
 	canvas = document.getElementById("canvas");
@@ -152,6 +158,7 @@ window.onload = function(){
 	 navigator.getUserMedia({video: true}, 
 	                         function(stream){
 <<<<<<< HEAD
+<<<<<<< HEAD
 											//var video = document.querySelector("video"); 
 											video.src = window.URL.createObjectURL(stream);
 											prise = stream;
@@ -159,10 +166,15 @@ window.onload = function(){
 											 
 	
 =======
+=======
+>>>>>>> f6a64ffbc54a0cbbb41583add6e6340150d3a92e
 								//var video = document.querySelector("video"); 
 								video.src = window.URL.createObjectURL(stream);
 								prise = stream;
 								}, erreur);
+<<<<<<< HEAD
+>>>>>>> f6a64ffbc54a0cbbb41583add6e6340150d3a92e
+=======
 >>>>>>> f6a64ffbc54a0cbbb41583add6e6340150d3a92e
 		
 }

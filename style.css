@@ -14,10 +14,21 @@ label{
 	text-shadow:2px 2px 10px black;
 }
 
-#divMenuDroite, #divMenuGauche{
-	margin-top:20px;
+canvas{
+	margin: 0 auto;
 }
 
-canvas{
-	border-radius:25px;
+li img{
+	height:60px;
+	width:60px;
+	float:left;
+	margin-left:5px;
+}
+
+#listeFichiers{
+	list-style-type:none;
+}
+
+#divMenuDroite, #divMenuGauche{
+	margin-top:20px;
 }

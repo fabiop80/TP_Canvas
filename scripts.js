@@ -16,10 +16,16 @@ var tabPhotos;
 
 
 window.onload = function(){
+<<<<<<< HEAD
 
 	 canvas = document.getElementById("canvas");
 	 ctx = canvas.getContext('2d');
 	 
+=======
+	dragListeners();
+	canvas = document.getElementById("canvas");
+	ctx = canvas.getContext('2d');
+>>>>>>> f6a64ffbc54a0cbbb41583add6e6340150d3a92e
 	var image = new Image();
 	
 	 
@@ -30,8 +36,8 @@ window.onload = function(){
 	//afficherPhoto();
 	
 	image.onload = function(){
-		//canvas.width = image.width;
-		//canvas.height = image.height;
+	canvas.width = image.width;
+	canvas.height = image.height;
 		ctx.drawImage(this, 0, 0, canvas.width, canvas.height);
 	}
 	
@@ -127,8 +133,8 @@ window.onload = function(){
 	contrst.addEventListener('change', function(e){
 	   e = window.event;
 	  contrstValue = this.value;
-	   canvas.style.webkitFilter = 'blur('+bluValue+'px)' + 'hue-rotate('+hueRValue+'deg)'+
-		                            'invert('+invtValue+')' + 'brightness('+brightnValue+')' +
+	   canvas.style.webkitFilter = 	'blur('+bluValue+'px)' + 'hue-rotate('+hueRValue+'deg)'+
+									'invert('+invtValue+')' + 'brightness('+brightnValue+')' +
 									'sepia('+sepiValue+')' + 'grayscale('+graysaValue+')' +
 									'opacity('+opaci.value+')'+'saturate('+satuvalue+')' +
 									'contrast('+this.value+')';
@@ -145,12 +151,19 @@ window.onload = function(){
 							  
 	 navigator.getUserMedia({video: true}, 
 	                         function(stream){
+<<<<<<< HEAD
 											//var video = document.querySelector("video"); 
 											video.src = window.URL.createObjectURL(stream);
 											prise = stream;
                                              }, erreur);
 											 
 	
+=======
+								//var video = document.querySelector("video"); 
+								video.src = window.URL.createObjectURL(stream);
+								prise = stream;
+								}, erreur);
+>>>>>>> f6a64ffbc54a0cbbb41583add6e6340150d3a92e
 		
 }
 
@@ -158,7 +171,9 @@ window.onload = function(){
 //acces camera
  function photo() {
          if (prise){ /* Sommes-nous en train de filmer? */
-				ctx.drawImage(video, 0, 0); /* Je dessine sur mon canvas ce que mon image film*/ 
+				canvas.width = video.videoWidth;
+				canvas.height = video.videoHeight;
+				ctx.drawImage(video, 0, 0, canvas.width, canvas.height); /* Je dessine sur mon canvas ce que mon image film*/ 
 			}
      }
 

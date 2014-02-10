@@ -16,28 +16,13 @@ var tabPhotos;
 
 
 window.onload = function(){
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 	 canvas = document.getElementById("canvas");
 	 ctx = canvas.getContext('2d');
 	 
-=======
 	dragListeners();
 	canvas = document.getElementById("canvas");
 	ctx = canvas.getContext('2d');
->>>>>>> f6a64ffbc54a0cbbb41583add6e6340150d3a92e
-=======
-	dragListeners();
-	canvas = document.getElementById("canvas");
-	ctx = canvas.getContext('2d');
->>>>>>> f6a64ffbc54a0cbbb41583add6e6340150d3a92e
-=======
-	dragListeners();
-	canvas = document.getElementById("canvas");
-	ctx = canvas.getContext('2d');
->>>>>>> f6a64ffbc54a0cbbb41583add6e6340150d3a92e
 	var image = new Image();
 	
 	 
@@ -157,49 +142,24 @@ window.onload = function(){
 	
 	var erreur = function(e){
       console.log("Accès refusé à la caméra");
-     } 
-	 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || 
+    } 
+	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || 
 	                          navigator.mozGetUserMedia || navigator.msGetUserMedia; 
 							  
-	 navigator.getUserMedia({video: true}, 
+	navigator.getUserMedia({video: true}, 
 	                         function(stream){
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-											//var video = document.querySelector("video"); 
-											video.src = window.URL.createObjectURL(stream);
-											prise = stream;
-                                             }, erreur);
-											 
-	
-=======
-=======
->>>>>>> f6a64ffbc54a0cbbb41583add6e6340150d3a92e
-=======
->>>>>>> f6a64ffbc54a0cbbb41583add6e6340150d3a92e
-								//var video = document.querySelector("video"); 
 								video.src = window.URL.createObjectURL(stream);
 								prise = stream;
 								}, erreur);
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> f6a64ffbc54a0cbbb41583add6e6340150d3a92e
-=======
->>>>>>> f6a64ffbc54a0cbbb41583add6e6340150d3a92e
-=======
->>>>>>> f6a64ffbc54a0cbbb41583add6e6340150d3a92e
-		
 }
-
-
 //acces camera
  function photo() {
          if (prise){ /* Sommes-nous en train de filmer? */
 				canvas.width = video.videoWidth;
 				canvas.height = video.videoHeight;
 				ctx.drawImage(video, 0, 0, canvas.width, canvas.height); /* Je dessine sur mon canvas ce que mon image film*/ 
-			}
-     }
+		}
+}
 
  function reset(){
 	canvas.removeAttribute("style");

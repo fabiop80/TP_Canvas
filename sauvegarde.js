@@ -1,63 +1,75 @@
 //Sauvegarder l'image
 function sauvegarder(){
-	btnSauvegardes=document.getElementById("idSauvegarde");
-	
-	btnSauvegardes.addEventListener('click',function(){
-		dataURL = canvas.toDataURL('image/png');
-		console.log(dataURL);
+	dataURL = canvas.toDataURL('image/png');
+	console.log(dataURL);
+
 	var liste= document.getElementById("listeFichiers");
-		can=document.createElement("canvas");
-	
-		c=can.getContext('2d');
-		var imag = new Image();
-		imag.height = 60;
-        imag.width = 60;
-		imag.src = dataURL;
-		c.width="100";
-		c.height="100";	
-	
-		imag.onload = function(){
-		c.drawImage(this, 0, 0, c.width, c.height);
+	can=document.createElement("canvas");
+	c=can.getContext('2d');
+	var imag = new Image();
+	imag.src = dataURL;
+		
+
+	imag.onload = function(){
+		can.width=100;
+		can.height=100;
+		c.drawImage(this, 0, 0, can.width, can.height);
 	}
 	
-		liste.appendChild(can);
-		
+	filtres= 'blur('+bluValue+'px)' + 'hue-rotate('+hueRValue+'deg)'+
+		                            'invert('+invtValue+')' + 'brightness('+brightnValue+')' +
+									'sepia('+sepiValue+')' + 'grayscale('+graysaValue+')' +
+									'opacity('+opaciValue+')'+'saturate('+satuvalue+')' +
+									'contrast('+contrstValue+')';
+									
+	can.style.webkitFilter = filtres;
+	var li = document.createElement("li");
+	
+	li.appendChild(can);		
+	liste.appendChild(li);
+
 		tabPhotos.push(dataURL);
 		
 		pictures=JSON.stringify(tabPhotos);
+		
+		tabFiltre.push(filtres);
+		var lefiltres=JSON.stringify(tabFiltre);
 	
 		localStorage.setItem("tabPhotos",pictures);
+		localStorage.setItem("tabFiltres",lefiltres);
 		
 		localStorage.setItem("src",dataURL);
-		
-	},false);
-	
+		localStorage.setItem("filtres",filtres);
 	
 }
-
-//affichage de photos
-function afficherPhoto()
- {
-    if(localStorage.getItem("tabPhotos")!=null)
-	  {
-			var x = JSON.parse(localStorage.getItem("tabPhotos"));
-		    var liste= document.getElementById("listeFichiers");
-
-			for (var i=0; i<x.length; i++)
-								  {
-								    
-									var li = document.createElement('li');							
-									var img = new Image();
-									//var chemin = window.URL.createObjectURL(fichiers[i]);
-									img.src = x[i];
-									img.height = 60;
-									img.width = 60;
-									img.style.cssFloat = 'left';
-									img.style.marginLeft = '5px';
-									li.appendChild(img);
-									liste.appendChild(li);
-	
-	                           }
-			
-      }
+//Affichage de photos
+function afficherPhoto(x, y) {
+	var liste= document.getElementById("listeFichiers");
+	for (var i=0; i<x.length; i++){
+		var li = document.createElement('li');	
+		var	canva=document.createElement('canvas');
+		var ct=canva.getContext("2d");
+		var img = new Image();
+		canva.style.height = "100px";
+		canva.style.width = "100px";
+		img.src = x[i];
+		ct.drawImage(img, 0, 0, canva.width, canva.height);
+		canva.style.webkitFilter = y[i];
+		canva.style.cssFloat = 'left';
+		li.appendChild(canva);
+		liste.appendChild(li);
+		$("canvas").each(function(index){
+			if(index>0){
+				$(this).click(function(){
+					canvas=document.getElementById("canvas");
+					ctx=canvas.getContext('2d');
+					ctx.clearRect(0,0,canvas.width, canvas.height);
+					imge= new Image();
+					imge.src=x[index-1];
+					ctx.drawImage(imge, 0, 0, canvas.width, canvas.height);
+					canvas.style.webkitFilter = tabFiltre[index-1];
+				});
+			}
+		});
+	}
  }

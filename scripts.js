@@ -8,7 +8,7 @@ var tabFiltre;
 
 
 window.onload = function(){
-	if(localStorage.getItem("tabPhotos")!=null)	{
+	if(localStorage.getItem("tabPhotos")!=null && localStorage.getItem("tabFiltres")!=null)	{
 	  tabPhotos = JSON.parse(localStorage.getItem("tabPhotos"));
 	  tabFiltre = JSON.parse(localStorage.getItem("tabFiltres"));
 	}else{
@@ -37,7 +37,9 @@ window.onload = function(){
 		ctx.drawImage(this, 0, 0, canvas.width, canvas.height);
 	}
 	
-	afficherPhoto(tabPhotos, tabFiltre);
+	if (tabPhotos.length > 0 && tabFiltre.length > 0){
+		afficherPhoto(tabPhotos, tabFiltre);
+	}
 	image.onload=function(){
 		this.width = canvas.width;
 		this.height = canvas.height;

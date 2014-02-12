@@ -1,3 +1,7 @@
+body{
+/* background-color: grey;*/
+}
+
 button{
 	margin-top:25px;
 	margin-bottom:5px;
@@ -14,8 +18,23 @@ label{
 	text-shadow:2px 2px 10px black;
 }
 
+#divCanvas{
+position: relative;
+}
+
+#divCanvas > img{
+position: absolute;
+}
+
 #canvas{
+    position: absolute;
 	margin: 0 auto;
+	top:40px;
+	left: 40px;
+	width: 343px;
+    height: 245px;
+	
+	
 }
 
 #listeFichiers > li{
@@ -37,5 +56,14 @@ li img{
 }
 
 #divMenuDroite, #divMenuGauche{
-	margin-top:20px;
+	margin-top:0px;
+}
+
+#html_btn {
+ display:none;
+}
+
+#my_video{
+	margin-top: 20px;
+    	
 }

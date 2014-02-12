@@ -1,5 +1,7 @@
 body{
-/* background-color: grey;*/
+	background: url('images/background3.jpg');
+    height: 100%;
+	width: 100%;
 }
 
 button{

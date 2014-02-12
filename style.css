@@ -35,8 +35,6 @@ position: absolute;
 	left: 40px;
 	width: 343px;
     height: 245px;
-	
-	
 }
 
 #listeFichiers > li{
@@ -67,5 +65,4 @@ li img{
 
 #my_video{
 	margin-top: 20px;
-    	
 }

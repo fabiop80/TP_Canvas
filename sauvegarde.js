@@ -13,7 +13,7 @@ function sauvegarder(){
 	imag.onload = function(){
 		can.width=100;
 		can.height=100;
-		c.drawImage(this, 0, 0, can.width, can.height);
+		c.drawImage(this, 0, 0, can.width, can.height);		
 	}
 	
 	filtres= 'blur('+bluValue+'px)' + 'hue-rotate('+hueRValue+'deg)'+
@@ -37,10 +37,6 @@ function sauvegarder(){
 	
 		localStorage.setItem("tabPhotos",pictures);
 		localStorage.setItem("tabFiltres",lefiltres);
-		
-		localStorage.setItem("src",dataURL);
-		localStorage.setItem("filtres",filtres);
-	
 }
 //Affichage de photos
 function afficherPhoto(x, y) {
@@ -67,6 +63,7 @@ function afficherPhoto(x, y) {
 					imge= new Image();
 					imge.src=x[index-1];
 					ctx.drawImage(imge, 0, 0, canvas.width, canvas.height);
+					imageDataBkp =ctx.getImageData(0,0,canvas.width, canvas.height);	
 					canvas.style.webkitFilter = tabFiltre[index-1];
 				});
 			}

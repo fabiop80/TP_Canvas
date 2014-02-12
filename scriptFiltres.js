@@ -11,11 +11,12 @@ var colorPicker;
 var rVal;
 var gVal;
 var bVal;
-var imageDataBkp;
+
 //Main filter functions
 function filtres(){
 	colorPicker = document.getElementById("idColorBg");
 	colorPicker.addEventListener('change', picker, false);
+	
 
 	var blu = document.getElementById('idBlur');
 	blu.addEventListener('change', function(e){
@@ -120,7 +121,7 @@ function filtres(){
 function picker(e){
 	e = window.event;
 	var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-	imageDataBkp = ctx.getImageData(0, 0, canvas.width, canvas.height);	
+	
 	var data = imageData.data;
 	var couleurAModifier = this.value;
 	var couleurRGB = convert(couleurAModifier);
@@ -141,24 +142,3 @@ function convert(hex) {
 				b: parseInt(result[3], 16)
 			} : null;
 		}
-//Event for reset button	 
- function reset(){
-	canvas.removeAttribute("style");
-	for(var i=0; i< arrayDefault.length; i++){
-		document.getElementsByTagName('input')[i+1].value = arrayDefault[i];
-	}
-	defaultValues();
-	ctx.putImageData(ctx.getImageData(0, 0, canvas.width, canvas.height), 0, 0);
-}
-//Function to put all values on default values	
-function defaultValues(){
-bluValue=0;
-hueRValue=0;
-invtValue=0;
-brightnValue=1;
-sepiValue=0;
-graysaValue=0;
-opaciValue=1;
-satuvalue=1;
-contrstValue=1;
-}

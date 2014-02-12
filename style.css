@@ -42,6 +42,7 @@ position: absolute;
 	margin-left:5px;
 	width:100px;
 	height:100px;
+	padding:0;
 }
 
 li img{
@@ -53,6 +54,8 @@ li img{
 
 #listeFichiers{
 	list-style-type:none;
+	padding: 0px;
+    margin: 0px;
 }
 
 #divMenuDroite, #divMenuGauche{

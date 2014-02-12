@@ -14,7 +14,16 @@ label{
 	text-shadow:2px 2px 10px black;
 }
 
+#divCanvas{
+position: relative;
+}
+
+#divCanvas > img{
+position: absolute;
+}
+
 #canvas{
+    position: absolute;
 	margin: 0 auto;
 }
 
@@ -37,5 +46,13 @@ li img{
 }
 
 #divMenuDroite, #divMenuGauche{
-	margin-top:20px;
+	margin-top:0px;
+}
+
+#html_btn {
+ display:none;
+}
+
+#my_video{
+	margin-top: 20px;
 }

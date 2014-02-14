@@ -16,82 +16,104 @@
 
 	</head>
 	<body>
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Modal title</h4>
+			  </div>
+			  <div class="modal-body">
+				<p>One fine body&hellip;</p>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		
 		<div class="container" id="contBody">
 			<div class="row">
 				<h1 class="text-center">titre</h1>
 			</div>
 			<div class="row">
-				<div class="col-lg-2" id="divMenuGauche">
+				<div class="col-lg-2 col-xs-12" id="divMenuGauche">
 					<input id="html_btn" type="file" accept="image/*">
 					<button type="button" id="idFile" class="btn btn-primary col-lg-10 col-lg-offset-1 col-xs-12">File</button>
-					<button type="button" id="idSauvegarde" class="btn btn-success col-lg-10 col-lg-offset-1 col-xs-12">Sauvegarde</button>
-					<button type="button" class="btn btn-info col-lg-10 col-lg-offset-1 col-xs-12">Aide</button>
-					<button type="button" id="idPhoto" class="btn btn-lg btn-default col-lg-4 col-lg-offset-4 col-xs-12">
-					<span class="glyphicon glyphicon-camera"></span></button>
+					<button type="button" id="idSauvegarde" class="btn btn-success col-lg-10 col-lg-offset-1 col-xs-12">Save</button>
+					<button type="button" id="idAide" class="btn btn-info col-lg-10 col-lg-offset-1 col-xs-12" data-toggle="modal" data-target="#myModal">Help</button>
+					<button type="button" id="idSounds" class="btn btn-lg btn-default col-lg-4 col-xs-offset-1 col-xs-4">
+						<span id="glyphSoundsOn" class="glyphicon glyphicon-volume-up"></span>
+						<span id="glyphSoundsOff" class="glyphicon glyphicon-volume-off" style="display:none"></span>
+					</button>
+					<button type="button" id="idPhoto" class="btn btn-lg btn-default col-lg-4 col-xs-offset-2 col-xs-4">
+						<span class="glyphicon glyphicon-camera"></span>
+					</button>
 				</div>
 				<div class="col-lg-4 col-lg-offset-1 col-xs-12" id="divCanvas">
-					<img id="cadre" src="images/lecadre3.jpg" alt="cadre" class="img-responsive"></img>
-					<canvas id="canvas" class="col-lg-12 img-responsive" style="border:1px solid black">
+					<img id="cadre" src="images/lecadre3.jpg" alt="cadre" class="img-responsive hidden-xs"></img>
+					<canvas id="canvas" class="col-lg-12 img-responsive">
 						<span> Your browser doesnt suppont canvas. </span>
 					</canvas>
 				</div>
-				<div class="col-lg-4 col-lg-offset-1 " id="divMenuDroite">
+				<div class="col-lg-4 col-lg-offset-1 col-xs-12" id="divMenuDroite">
 					<div class="row" id="mnuDrtLn0">
-						<label for="idBlur" class="col-lg-2">Blur:</label>
-						<div class="col-lg-3">
+						<label for="idBlur" class="col-lg-2 col-xs-5">Blur:</label>
+						<div class="col-lg-3 col-xs-7">
 							<input type="number" class="form-control" id="idBlur" min="0" max="10" step="1" value="0"/>
 						</div>
 						
-						<label for="idHueRotate" class="col-lg-4">Hue-rotate:</label>
-						<div class="col-lg-3">
+						<label for="idHueRotate" class="col-lg-4 col-xs-5">Hue-rotate:</label>
+						<div class="col-lg-3 col-xs-7">
 							<input type="number" class="form-control" id="idHueRotate" min="0" max="180" step="18" value="0"/>
 						</div>
 					</div>
 					
 					<div class="row" id="mnuDrtLn1">
-						<label for="idInvert" class="col-lg-2">Invert:</label>
-						<div class="col-lg-3">
+						<label for="idInvert" class="col-lg-2 col-xs-5">Invert:</label>
+						<div class="col-lg-3 col-xs-7">
 							<input type="number" class="form-control" id="idInvert" min="0" max="1" step="0.1" value="0"/>
 						</div>
 						
-						<label for="idBrightness" class="col-lg-4">Brightness:</label>
-						<div class="col-lg-3">
+						<label for="idBrightness" class="col-lg-4 col-xs-5">Brightness:</label>
+						<div class="col-lg-3 col-xs-7">
 							<input type="number" class="form-control" id="idBrightness" min="0" max="10" step="0.1" value="1"/>
 						</div>
 					</div>
 
 					<div class="row" id="mnuDrtLn2">
-						<label for="idSepia" class="col-lg-2">Sepia:</label>
-						<div class="col-lg-3">
+						<label for="idSepia" class="col-lg-2 col-xs-5">Sepia:</label>
+						<div class="col-lg-3 col-xs-7">
 							<input type="number" class="form-control" id="idSepia" min="0" max="1" step="0.1" value="0"/>
 						</div>
 						
-						<label for="idGrayscale" class="col-lg-4">Grayscale:</label>
-						<div class="col-lg-3">
+						<label for="idGrayscale" class="col-lg-4 col-xs-5">Grayscale:</label>
+						<div class="col-lg-3 col-xs-7">
 							<input type="number" class="form-control" id="idGrayscale" min="0" max="1" step="0.1" value="0"/>
 						</div>
 					</div>
 
 					<div class="row" id="mnuDrtLn3">
-						<label for="idOpacity" class="col-lg-2">Opacity:</label>
-						<div class="col-lg-3">
+						<label for="idOpacity" class="col-lg-2 col-xs-5">Opacity:</label>
+						<div class="col-lg-3 col-xs-7">
 							<input type="number" class="form-control" id="idOpacity" min="0" max="1" step="0.1" value="1"/>
 						</div>
 						
-						<label for="idSaturate" class="col-lg-4">Saturate:</label>
-						<div class="col-lg-3">
+						<label for="idSaturate" class="col-lg-4 col-xs-5">Saturate:</label>
+						<div class="col-lg-3 col-xs-7">
 							<input type="number" class="form-control" id="idSaturate" min="0" max="10" step="1" value="1"/>
 						</div>
 					</div>
 					
 					<div class="row" id="mnuDrtLn4">
-						<label for="idContrast" class="col-lg-2">Contrast:</label>
-						<div class="col-lg-3">
+						<label for="idContrast" class="col-lg-2 col-xs-5">Contrast:</label>
+						<div class="col-lg-3 col-xs-7">
 							<input type="number" class="form-control" id="idContrast" min="0" max="10" step="0.5" value="1"/>
 						</div>
 						
-						<label for="idColorBg" class="col-lg-4">Pick a color:</label>
-						<div class="col-lg-3">
+						<label for="idColorBg" class="col-lg-4 col-xs-5">Pick a color:</label>
+						<div class="col-lg-3 col-xs-7">
 							<input type="color" class="form-control" id="idColorBg"/>
 						</div>
 					</div>
@@ -105,12 +127,14 @@
 			</div>
 			
 			<div style="height:100px; width:900px; overflow-x:auto; overflow-y:hidden ; padding-bottom:10px;" class="img-responsive">		
- 			     <ul id="listeFichiers" style="height:100px; width:1000px;"></ul>	 
+ 			     <ul id="listeFichiers" style="height:100px; width:2000px;"></ul>	 
 			</div>
 			
 		</div>
 		<div class="row" id="footer">
 		<a class="col-lg-12 text-center" href="http://glyphicons.com/">Glyphicons page</a>
 		</div>
+		<audio id="photoSound"><source src="sounds/photoSound.mp3" type="audio/mpeg"></audio>
+		<audio id="clickSound"><source src="sounds/clkSound.mp3" type="audio/mpeg"></audio>
 	</body>
 </html>

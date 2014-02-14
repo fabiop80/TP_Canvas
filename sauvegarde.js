@@ -13,7 +13,8 @@ function sauvegarder(){
 	imag.onload = function(){
 		can.width=100;
 		can.height=100;
-		c.drawImage(this, 0, 0, can.width, can.height);		
+		c.drawImage(this, 0, 0, can.width, can.height);
+		
 	}
 	
 	filtres= 'blur('+bluValue+'px)' + 'hue-rotate('+hueRValue+'deg)'+
@@ -56,17 +57,20 @@ function afficherPhoto(x, y) {
 		liste.appendChild(li);
 		$("canvas").each(function(index){
 			if(index>0){
-				$(this).click(function(){
-					canvas=document.getElementById("canvas");
-					ctx=canvas.getContext('2d');
-					ctx.clearRect(0,0,canvas.width, canvas.height);
-					imge= new Image();
-					imge.src=x[index-1];
-					ctx.drawImage(imge, 0, 0, canvas.width, canvas.height);
-					imageDataBkp =ctx.getImageData(0,0,canvas.width, canvas.height);	
-					canvas.style.webkitFilter = tabFiltre[index-1];
-				});
+				$(this).click(eventPhoto(index,x)
+				);
 			}
 		});
 	}
+ }
+ 
+ function eventPhoto(idx,x2){
+	canvas=document.getElementById("canvas");
+	ctx=canvas.getContext('2d');
+	ctx.clearRect(0,0,canvas.width, canvas.height);
+	imge= new Image();
+	imge.src=x2[idx-1];
+	ctx.drawImage(imge, 0, 0, canvas.width, canvas.height);
+	imageDataBkp =ctx.getImageData(0,0,canvas.width, canvas.height);	
+	canvas.style.webkitFilter = tabFiltre[idx-1];
  }

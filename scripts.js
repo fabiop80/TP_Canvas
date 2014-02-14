@@ -6,10 +6,9 @@ var video;
 var tabPhotos;
 var tabFiltre;
 var imageDataBkp;
+var soundsBol = true;
 
 window.onload = function(){
-
-   
 	if(localStorage.getItem("tabPhotos")!=null && localStorage.getItem("tabFiltres")!=null)	{
 	  tabPhotos = JSON.parse(localStorage.getItem("tabPhotos"));
 	  tabFiltre = JSON.parse(localStorage.getItem("tabFiltres"));
@@ -19,7 +18,10 @@ window.onload = function(){
 	}
 
 	$('#idFile').bind("click" , function () {
-        $('#html_btn').click();
+       	if (soundsBol){
+			document.getElementById("clickSound").play();
+		}
+		$('#html_btn').click();
     });
 	
 	var image = new Image();
@@ -36,19 +38,15 @@ window.onload = function(){
 	
 	document.getElementById("idReset").onclick = reset;
 	document.getElementById("html_btn").onchange = loadFile;
+	document.getElementById("idSounds").onclick = toggleSounds;
+	document.getElementById("idAide").onclick = function(){
+	 	if (soundsBol)
+		document.getElementById("clickSound").play();
+	};
 
-	
 	if (tabPhotos.length > 0 && tabFiltre.length > 0){
 		afficherPhoto(tabPhotos, tabFiltre);
 	}
-	
-	/*image.onload=function(){
-		this.width = canvas.width;
-		this.height = canvas.height;
-		ctx.drawImage(this,0,0,canvas.width,canvas.height);
-		imageDataBkp = ctx.getImageData(0, 0, canvas.width, canvas.height);	
-	}*/
-//	canvas.style.webkitFilter=localStorage.getItem("filtres");	
 
 	video = document.getElementById("my_video");
 	video.addEventListener("click", photo, false);
@@ -70,17 +68,18 @@ window.onload = function(){
 }
 //acces camera
  function photo() {
+		if(soundsBol)
+			document.getElementById("photoSound").play();
+ 
          if (prise){ /* Sommes-nous en train de filmer? */
 				canvas.width = video.videoWidth;
 				canvas.height = video.videoHeight;
 				ctx.drawImage(video, 0, 0, canvas.width, canvas.height); /* Je dessine sur mon canvas ce que mon image film*/ 
 				imageDataBkp = ctx.getImageData(0,0,canvas.width,canvas.height);	
 				reset();
-			
 			}
-	
-     }
- 
+}
+
 function loadFile(){
 	var monFichier = document.getElementsByTagName("input")[0].files[0];
 	var urlObj = window.URL.createObjectURL(monFichier);
@@ -101,6 +100,9 @@ function loadFile(){
 
 //Event for reset button	 
  function reset(){
+ 	if (soundsBol){
+		document.getElementById("clickSound").play();
+	}
 	canvas.removeAttribute("style");
 	for(var i=0; i< arrayDefault.length; i++){
 		document.getElementsByTagName('input')[i+1].value = arrayDefault[i];
@@ -110,13 +112,28 @@ function loadFile(){
 }
 //Function to put all values on default values	
 function defaultValues(){
-bluValue=0;
-hueRValue=0;
-invtValue=0;
-brightnValue=1;
-sepiValue=0;
-graysaValue=0;
-opaciValue=1;
-satuvalue=1;
-contrstValue=1;
+	bluValue=0;
+	hueRValue=0;
+	invtValue=0;
+	brightnValue=1;
+	sepiValue=0;
+	graysaValue=0;
+	opaciValue=1;
+	satuvalue=1;
+	contrstValue=1;
+}
+
+function toggleSounds(){
+	if (!soundsBol){
+		document.getElementById("clickSound").play();
+		$('#glyphSoundsOn').css("display", "inline");
+		$('#glyphSoundsOff').css("display", "none");
+		$('#idSounds').blur();
+		soundsBol = true;
+	} else {
+		$('#glyphSoundsOn').css("display", "none");
+		$('#glyphSoundsOff').css("display", "inline");
+		$('#idSounds').blur();
+		soundsBol = false;
+	}
 }

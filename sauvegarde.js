@@ -27,7 +27,7 @@ function sauvegarder(){
 	
 	li.appendChild(can);		
 	liste.appendChild(li);
-
+								
 		tabPhotos.push(dataURL);
 		
 		pictures=JSON.stringify(tabPhotos);

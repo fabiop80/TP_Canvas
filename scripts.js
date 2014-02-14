@@ -58,6 +58,7 @@ window.onload = function(){
       console.log("Accès refusé à la caméra");
      } 
 	 
+	
 	 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || 
 	                          navigator.mozGetUserMedia || navigator.msGetUserMedia; 
 

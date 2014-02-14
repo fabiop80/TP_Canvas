@@ -1,5 +1,8 @@
 //Sauvegarder l'image
 function sauvegarder(){
+    if(soundsBol)
+	   document.getElementById("clickSound").play();
+	   
 	dataURL = canvas.toDataURL('image/png');
 	console.log(dataURL);
 
@@ -23,6 +26,15 @@ function sauvegarder(){
 									'contrast('+contrstValue+')';
 									
 	can.style.webkitFilter = filtres;
+	can.addEventListener("click",function(){
+					canvas=document.getElementById("canvas");
+					ctx=canvas.getContext('2d');
+					ctx.clearRect(0,0,canvas.width, canvas.height);
+					ctx.drawImage(imag, 0, 0, canvas.width, canvas.height);
+					imageDataBkp =ctx.getImageData(0,0,canvas.width, canvas.height);	
+					canvas.style.webkitFilter = tabFiltre[index-1];
+	
+	},false);
 	var li = document.createElement("li");
 	
 	li.appendChild(can);		

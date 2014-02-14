@@ -44,6 +44,9 @@ window.onload = function(){
 		document.getElementById("clickSound").play();
 	};
 
+	canvas.addEventListener("dblclick", pleinEcran, false); 
+	
+
 	if (tabPhotos.length > 0 && tabFiltre.length > 0){
 		afficherPhoto(tabPhotos, tabFiltre);
 	}
@@ -51,7 +54,7 @@ window.onload = function(){
 	video = document.getElementById("my_video");
 	video.addEventListener("click", photo, false);
 	document.getElementById("idPhoto").addEventListener("click", photo, false);
-	
+
 	var erreur = function(e){
       console.log("Accès refusé à la caméra");
      } 
@@ -66,6 +69,19 @@ window.onload = function(){
 								prise = stream;
 							}, erreur);
 }
+
+//plein ecran
+function pleinEcran(){
+  var monCanvas = document.getElementById("canvas");
+  if (monCanvas.requestFullscreen){
+	monCanvas.requestFullscreen();
+	} else if (monCanvas.mozRequestFullScreen){
+	monCanvas.mozRequestFullScreen();
+	} else if (monCanvas.webkitRequestFullscreen){
+	monCanvas.webkitRequestFullscreen();
+	}
+  }
+
 //acces camera
  function photo() {
 		if(soundsBol)

@@ -5,6 +5,8 @@ var ctx;
 var video;
 var tabPhotos;
 var tabFiltre;
+var filtreImg;
+var tabFiltrePasFucker;
 var imageDataBkp;
 var soundsBol = true;
 
@@ -12,9 +14,11 @@ window.onload = function(){
 	if(localStorage.getItem("tabPhotos")!=null && localStorage.getItem("tabFiltres")!=null)	{
 	  tabPhotos = JSON.parse(localStorage.getItem("tabPhotos"));
 	  tabFiltre = JSON.parse(localStorage.getItem("tabFiltres"));
+	  tabFiltrePasFucker = JSON.parse(localStorage.getItem("tabFiltresPasFucker"));
 	}else{
 	 tabPhotos = new Array();
 	 tabFiltre = new Array();
+	 tabFiltrePasFucker = new Array();
 	}
 
 	$('#idFile').bind("click" , function () {
@@ -37,6 +41,10 @@ window.onload = function(){
 	btnSauvegardes.addEventListener('click',sauvegarder, false)
 	
 	document.getElementById("idReset").onclick = reset;
+	document.getElementById("idReset").onmousedown = function(){
+		if (soundsBol)
+		document.getElementById("clickSound").play();
+	};
 	document.getElementById("html_btn").onchange = loadFile;
 	document.getElementById("idSounds").onclick = toggleSounds;
 	document.getElementById("idAide").onclick = function(){
@@ -48,7 +56,7 @@ window.onload = function(){
 	
 
 	if (tabPhotos.length > 0 && tabFiltre.length > 0){
-		afficherPhoto(tabPhotos, tabFiltre);
+		afficherPhoto(tabPhotos, tabFiltre, tabFiltrePasFucker);
 	}
 
 	video = document.getElementById("my_video");
@@ -85,7 +93,9 @@ function pleinEcran(){
 //acces camera
  function photo() {
 		if(soundsBol)
+		{
 			document.getElementById("photoSound").play();
+			}
  
          if (prise){ /* Sommes-nous en train de filmer? */
 				canvas.width = video.videoWidth;
@@ -94,6 +104,7 @@ function pleinEcran(){
 				imageDataBkp = ctx.getImageData(0,0,canvas.width,canvas.height);	
 				reset();
 			}
+	$('#idPhoto').blur();		
 }
 
 function loadFile(){
@@ -113,12 +124,8 @@ function loadFile(){
 		window.URL.revokeObjectURL(urlObj);
 	}						    
 }
-
 //Event for reset button	 
  function reset(){
- 	if (soundsBol){
-		document.getElementById("clickSound").play();
-	}
 	canvas.removeAttribute("style");
 	for(var i=0; i< arrayDefault.length; i++){
 		document.getElementsByTagName('input')[i+1].value = arrayDefault[i];
@@ -138,7 +145,7 @@ function defaultValues(){
 	satuvalue=1;
 	contrstValue=1;
 }
-
+//Turn On/Off the sounds
 function toggleSounds(){
 	if (!soundsBol){
 		document.getElementById("clickSound").play();
